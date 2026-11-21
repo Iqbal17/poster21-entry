@@ -303,9 +303,11 @@ def draw():
     # ----------------------------------------------------------- cliff -----
     cv.polyfill([(0, 1024), (0, 430), (120, 418), (220, 470), (300, 560),
                  (330, 700), (300, 1024)], CLIFF)
-    # a pale edge where the dusk catches the cliff
-    cv.line(0, 430, 120, 418, ROSE)
-    cv.line(120, 418, 220, 470, ROSE)
+    # a pale edge where the dusk catches the cliff (two pixels wide)
+    for dy in (0, 1):
+        cv.line(0, 430 + dy, 120, 418 + dy, ROSE)
+        cv.line(120, 418 + dy, 220, 470 + dy, ROSE)
+        cv.line(220, 470 + dy, 300, 560 + dy, ROSE)
 
     # ------------------------------------------------------ lighthouse -----
     lighthouse(cv, 150, 470)
